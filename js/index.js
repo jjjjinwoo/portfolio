@@ -26,3 +26,12 @@ function cursorHover() {
 function cursorOut() {
   mouseCursor.classList.remove("hover");
 }
+
+// 메인섹션 : x,y 축 좌표 - Jquery
+
+$(function () {
+  $(document).on("mousemove", function (e) {
+    $(".posX").text(e.pageX);
+    $(".posY").text(e.pageY);
+  });
+});

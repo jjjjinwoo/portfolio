@@ -402,3 +402,20 @@ header .menu button:hover div:nth-child(3) {
 .main_section .scroll .down .mouse {
   margin-bottom: 3px;
 }
+.main_section .xy_box {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  color: white;
+  opacity: 0.5;
+  padding: 20px;
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+}
+.main_section .xy_box > span {
+  width: fit-content;
+  background-color: black;
+  padding: 5px;
+  font-size: 12px;
+}
