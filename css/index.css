@@ -9,8 +9,9 @@ body {
   font-family: "Pretendard", sans-serif;
   font-weight: 200;
   letter-spacing: 0.05rem;
-  overflow: hidden;
+  overflow-x: hidden;
   cursor: none;
+  word-break: keep-all;
 }
 button {
   background-color: transparent;
@@ -54,6 +55,7 @@ header {
   animation-duration: 1s;
   animation-fill-mode: forwards;
   opacity: 0;
+  transition: 0.5s;
 }
 @keyframes translateY {
   0% {
@@ -419,3 +421,71 @@ header .menu button:hover div:nth-child(3) {
   padding: 5px;
   font-size: 12px;
 }
+
+/* 섹션1 */
+
+.section1 {
+  width: 100vw;
+  height: 2000px;
+  background-color: white;
+}
+.section1 .container {
+  padding: 280px 0;
+}
+.section1 .top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 146px;
+}
+.section1 .top .img_box {
+  margin-left: 120px;
+  transform: rotateY(90deg);
+}
+.section1 .top .text_box {
+  display: flex;
+  flex-direction: column;
+}
+.section1 .top .text_box .pin {
+  color: white;
+  background-color: #cecece;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  width: fit-content;
+  margin-bottom: 20px;
+}
+.section1 .top .text_box .title {
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 66px;
+  margin-bottom: 42px;
+}
+.section1 .top .text_box .title > span {
+  font-weight: 700;
+}
+.section1 .top .text_box .text {
+  font-size: 18px;
+  line-height: 32px;
+  font-weight: 300;
+  max-width: 600px;
+  margin-bottom: 74px;
+}
+.section1 .top .skill_box {
+  display: flex;
+  gap: 20px;
+}
+.section1 .top .skill_box > div {
+  width: 50px;
+  height: 50px;
+  background-color: black;
+  border-radius: 5px;
+}
+
+/* 해결해야할 문제
+- 메인섹션 width가 가로스크롤이 생김 body 풀면 <-반응형에서 오류남
+
+- 스크롤 내리면 메인섹션 조금씩 블랙박스로 덮여지게
+- 메인섹션에서 1로 갈때 반자동 스크롤
+
+*/
