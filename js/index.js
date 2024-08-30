@@ -60,6 +60,7 @@ addHoverListeners(document.querySelectorAll("h2"));
 addHoverListeners(document.querySelectorAll("img"));
 addHoverListeners(document.querySelectorAll("p"));
 addHoverListeners(document.querySelectorAll("i"));
+addHoverListeners(document.querySelectorAll("li"));
 
 // *메인섹션 : x,y 축 좌표 - Jquery
 
@@ -180,3 +181,31 @@ function invertHeader2() {
     sec1TextScrollAdd();
   }
 }
+
+// *섹션2 가로 스크롤 트리거 - GSAP
+
+let items = gsap.utils.toArray(".items"),
+  pageWrapper = document.querySelector("main");
+
+items.forEach((container, i) => {
+  let localItems = container.querySelectorAll(".item"),
+    distance = () => {
+      let lastItemBounds =
+          localItems[localItems.length - 1].getBoundingClientRect(),
+        containerBounds = container.getBoundingClientRect();
+      return Math.max(0, lastItemBounds.right - containerBounds.right);
+    };
+  gsap.to(container, {
+    x: () => -distance(), // make sure it dynamically calculates things so that it adjusts to resizes
+    ease: "none",
+    scrollTrigger: {
+      trigger: container,
+      start: "bottom bottom",
+      pinnedContainer: pageWrapper,
+      end: () => "+=" + distance(),
+      pin: pageWrapper,
+      scrub: true,
+      invalidateOnRefresh: true, // will recalculate any function-based tween values on resize/refresh (making it responsive)
+    },
+  });
+});

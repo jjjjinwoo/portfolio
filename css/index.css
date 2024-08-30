@@ -555,4 +555,66 @@ header .menu button:hover div:nth-child(3) {
 .section2 {
   background-color: #f8f8f8;
   height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
 }
+.section2 .container {
+  width: 92%;
+  margin: 0 auto;
+}
+.section2 .items {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  list-style: none;
+}
+.section2 .item {
+  min-width: 76vh;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  background-color: transparent;
+  margin-right: 40px;
+  margin-bottom: 40px;
+  border-radius: 20px;
+  position: relative;
+}
+.section2 .card {
+  transition: 0.5s;
+  transform-style: preserve-3d;
+}
+.section2 .item:last-child {
+  margin-right: 0px;
+}
+.section2 .item .front,
+.section2 .item .back {
+  background-color: black;
+  position: absolute;
+  min-width: 76vh;
+  height: auto;
+  border-radius: 20px;
+  aspect-ratio: 1 / 1;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+}
+.section2 .item .front {
+  background-color: rgb(255, 255, 255);
+  border: 1px solid #ccc;
+  transform: rotateY(180deg);
+}
+.section2 .item .back {
+  background: rgb(0, 0, 0);
+}
+.section2 .item:hover .card {
+  transform: rotateY(180deg);
+}
+
+/* 섹션3 */
+
+.section3 {
+  height: 100vh;
+  background-color: white;
+}
+
+/* 섹션1 bottom 텍스트도 애니메이션 줘야함 */
