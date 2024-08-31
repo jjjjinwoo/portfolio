@@ -5,6 +5,14 @@
 
 /* 공통 */
 
+.no-scroll {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
 body {
   font-family: "Pretendard", sans-serif;
   font-weight: 200;
@@ -26,11 +34,27 @@ a {
 
 #cursor {
   position: fixed;
+  width: 6px;
+  height: 6px;
+  border-radius: 100%;
+  background-color: rgb(0, 0, 0);
+  z-index: 900;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transform-origin: 50% 50%;
+  animation-name: opacity;
+  animation-delay: 1s;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+#cursorF {
+  position: fixed;
   width: 20px;
   height: 20px;
   border-radius: 100%;
   background-color: aquamarine;
-  z-index: 900;
+  z-index: 901;
   mix-blend-mode: exclusion;
   pointer-events: none;
   transform: translate(-50%, -50%);
@@ -42,7 +66,7 @@ a {
   animation-fill-mode: forwards;
   opacity: 0;
 }
-#cursor.hover {
+#cursorF.hover {
   width: 100px;
   height: 100px;
   background-color: white;
@@ -72,7 +96,7 @@ header {
 header .container {
   position: relative;
   padding: 20px;
-  padding-top: 80px;
+  padding-top: 60px;
   box-sizing: border-box;
   max-width: 1800px;
   margin: 0 auto;
@@ -183,7 +207,17 @@ header .menu button:hover div:nth-child(3) {
   padding-right: 100px;
 }
 #rnb .on {
+  position: absolute;
+  min-width: 20px;
+  height: 20px;
+  transition: 2s;
+  opacity: 0;
+  animation-name: rnb;
+  animation-duration: 1s;
+  animation-delay: 1.5s;
+  animation-fill-mode: forwards;
   background-color: white;
+  pointer-events: none;
 }
 
 /* 메인 섹션 */
@@ -220,7 +254,7 @@ header .menu button:hover div:nth-child(3) {
     opacity: 100%;
   }
   100% {
-    opacity: 70%;
+    opacity: 90%;
   }
 }
 .main_section .text_box {
@@ -291,6 +325,9 @@ header .menu button:hover div:nth-child(3) {
   animation-delay: 1s;
   animation-duration: 1s;
   animation-fill-mode: forwards;
+  display: flex;
+  justify-content: center;
+  gap: 0px;
 }
 @keyframes mainTitle {
   0% {
@@ -298,34 +335,40 @@ header .menu button:hover div:nth-child(3) {
     opacity: 0;
     letter-spacing: -0.5rem;
   }
+  50% {
+    gap: 0px;
+  }
   100% {
     opacity: 1;
     letter-spacing: 0rem;
+    gap: 22px;
   }
 }
 .main_section .text_box .title span {
+  overflow: hidden;
   position: relative;
   z-index: 2;
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
   font-size: 106px;
-  -webkit-text-stroke: 1px #fff;
-  background-image: -webkit-linear-gradient(transparent 50%, #fff 50%);
-  background-position: 0 -78px;
-  background-size: 100% 364px;
-  -webkit-background-clip: text;
-  animation-name: mainTitleFill;
+  color: white;
+  width: 0%;
+  display: block;
+  animation-name: mainTitleWidth;
   animation-delay: 1.5s;
   animation-duration: 2s;
   animation-fill-mode: forwards;
   transition: 0.5s;
+  font-style: italic;
+  display: flex;
+  justify-content: center;
 }
-@keyframes mainTitleFill {
+@keyframes mainTitleWidth {
   0% {
-    background-position: 0 -78px;
+    width: 0%;
   }
   100% {
-    background-position: 0 -175px;
+    width: 100%;
   }
 }
 .main_section .text_box .title span:hover {
@@ -343,6 +386,7 @@ header .menu button:hover div:nth-child(3) {
   animation-delay: 1s;
   animation-duration: 1s;
   animation-fill-mode: forwards;
+  height: 64px;
 }
 @keyframes mainText {
   0% {
@@ -508,14 +552,19 @@ header .menu button:hover div:nth-child(3) {
   gap: 20px;
 }
 .section1 .top .skill_box > i {
-  display: block;
   width: 50px;
   height: 50px;
-  background-color: black;
+  background-color: #f7f7f7;
   border-radius: 5px;
   opacity: 0;
   transform: translateX(20px);
   transition: 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.section1 .top .skill_box > i > img {
+  width: 60%;
 }
 .section1 .top .skill_box > i.scroll {
   opacity: 1;
@@ -525,6 +574,8 @@ header .menu button:hover div:nth-child(3) {
   margin-top: 250px;
   display: flex;
   flex-direction: column;
+  opacity: 0;
+  transform: translateY(20px);
 }
 .section1 .bottom .text_box {
   display: flex;
@@ -588,7 +639,11 @@ header .menu button:hover div:nth-child(3) {
 }
 .section2 .item .front,
 .section2 .item .back {
-  background-color: black;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   min-width: 76vh;
   height: auto;
@@ -597,24 +652,48 @@ header .menu button:hover div:nth-child(3) {
   top: 0;
   left: 0;
   backface-visibility: hidden;
+  padding: 70px;
+  box-sizing: border-box;
+}
+.section2 .item h2 {
+  font-size: 46px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 16px;
 }
 .section2 .item .front {
   background-color: rgb(255, 255, 255);
   border: 1px solid #ccc;
   transform: rotateY(180deg);
 }
+.section2 .item .front h2 {
+  font-weight: 700;
+  color: black;
+}
+.section2 .item .front p {
+  text-align: center;
+  font-size: 18px;
+  line-height: 36px;
+  font-weight: 300;
+  color: #747474;
+}
 .section2 .item .back {
   background: rgb(0, 0, 0);
 }
+
 .section2 .item:hover .card {
   transform: rotateY(180deg);
 }
 
 /* 섹션3 */
 
-.section3 {
-  height: 100vh;
+.section3 .container {
+  position: relative;
+  width: 100%;
+  background: #000;
+}
+.section3 .panel {
+  width: 100%;
+  height: 150vh;
   background-color: white;
 }
-
-/* 섹션1 bottom 텍스트도 애니메이션 줘야함 */

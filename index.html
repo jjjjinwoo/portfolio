@@ -11,9 +11,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
     <!-- 스크롤 트리거 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
+    <!-- typeit -->
+    <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
   </head>
   <body>
     <div id="cursor"></div>
+    <div id="cursorF"></div>
     <header>
       <div class="container">
         <div class="logo">
@@ -28,7 +31,7 @@
           </button>
         </div>
         <nav id="rnb">
-          <button class="on">
+          <button>
             <span>INTRO</span>
           </button>
           <button>
@@ -40,6 +43,7 @@
           <button>
             <span>END</span>
           </button>
+          <div class="on"></div>
         </nav>
       </div>
     </header>
@@ -61,10 +65,7 @@
             <img class="up" src="./img/main/lock_2.svg" alt="lock_2" />
           </div>
           <h2 class="title">I'll <span>SOLVE</span> IT</h2>
-          <p class="text">
-            [ sɑːlv ]<br />
-            1. (문제를) 해결하다 2. (문제를) 풀다
-          </p>
+          <p class="text" id="callback"></p>
         </div>
         <div class="scroll">
           <div class="line"></div>
@@ -101,9 +102,21 @@
               </h2>
               <p class="text">
                 결국은 해결할거라는 무모하지만 긍정적인 생각을 바탕으로 최선을
-                다하는 결국은 해결하고야 마는 디자이너이자 일꾼이 되겠습니다.
+                다하는<br />
+                디자이너이자 동료가 되겠습니다.
               </p>
-              <div class="skill_box"><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="skill_box">
+                <i><img src="./img/main/skill_icon/html.png" alt="html" /></i
+                ><i><img src="./img/main/skill_icon/css.png" alt="css" /></i
+                ><i><img src="./img/main/skill_icon/js.png" alt="js" /></i
+                ><i
+                  ><img
+                    src="./img/main/skill_icon/jquery.svg"
+                    alt="jquery" /></i
+                ><i
+                  ><img src="./img/main/skill_icon/figma.png" alt="figma"
+                /></i>
+              </div>
             </div>
           </div>
           <div class="bottom">
@@ -124,12 +137,12 @@
               <span class="title">WORK EXPERIENCE</span>
               <div class="text">
                 <p>
-                  단국대학교 죽전 캠퍼스 커뮤니케이션 디자인과 졸업<br />
-                  (2000.00.00~ 2000.00.00)
+                  모바일앱협동조합 디자인/기획 현장실습<br />
+                  (2023.01~ 2023.04)
                 </p>
                 <p>
-                  스마트웹디자인&모바일UI/UX실무자양성과정 수료<br />
-                  (2000.00.00~ 2000.00.00)
+                  싸이웍스 UI디자인팀 PRO<br />
+                  (2023.06~ 2024.02)
                 </p>
               </div>
             </div>
@@ -142,32 +155,96 @@
           <ul class="items">
             <li class="item">
               <div class="card">
-                <div class="front"></div>
-                <div class="back"></div>
+                <div class="front">
+                  <img src="./img/main/skill_icon2/design_f.svg" alt="design" />
+                  <h2>DESIGN SKILL</h2>
+                  <p>
+                    Illustrator, Photoshop 등 왠만한 디자인 툴은 다룰줄 알며
+                    밑의 프로젝트들 외에도 다양한 UI/UX 디자인을 해온 경험이
+                    있습니다.
+                  </p>
+                </div>
+                <div class="back">
+                  <img src="./img/main/skill_icon2/design.svg" alt="design" />
+                  <h2>DESIGN SKILL</h2>
+                </div>
               </div>
             </li>
             <li class="item">
               <div class="card">
-                <div class="front"></div>
-                <div class="back"></div>
+                <div class="front">
+                  <img
+                    src="./img/main/skill_icon2/adaptabilty_f.svg"
+                    alt="design"
+                  />
+                  <h2>ADAPTABILITY</h2>
+                  <p>
+                    습득력이 빠른 편이라 다양하게 코드를 응용할 수 있습니다.
+                  </p>
+                </div>
+                <div class="back">
+                  <img
+                    src="./img/main/skill_icon2/adaptabilty.svg"
+                    alt="design"
+                  />
+                  <h2>ADAPTABILITY</h2>
+                </div>
               </div>
             </li>
             <li class="item">
               <div class="card">
-                <div class="front"></div>
-                <div class="back"></div>
+                <div class="front">
+                  <img
+                    src="./img/main/skill_icon2/character_f.svg"
+                    alt="design"
+                  />
+                  <h2>CHARACTER</h2>
+                  <p>
+                    낯을 많이 가리며 소심하고 조용한 면이 있지만 반대로 분란을
+                    싫어해 왠만하면 수용하는 성격으로 팀 내 분위기를 해치지
+                    않습니다.
+                  </p>
+                </div>
+                <div class="back">
+                  <img
+                    src="./img/main/skill_icon2/character.svg"
+                    alt="design"
+                  />
+                  <h2>CHARACTER</h2>
+                </div>
               </div>
             </li>
             <li class="item">
               <div class="card">
-                <div class="front"></div>
-                <div class="back"></div>
+                <div class="front">
+                  <img src="./img/main/skill_icon2/design_f.svg" alt="design" />
+                  <h2>HOBBY</h2>
+                  <p>
+                    요즘은 코딩하는게 가장 재밌고 즐기는 취미가 되어서 평소에도
+                    코딩실력 쌓는 것에 흥미를 느끼고 있습니다.
+                  </p>
+                </div>
+                <div class="back">
+                  <img src="./img/main/skill_icon2/design.svg" alt="design" />
+                  <h2>HOBBY</h2>
+                </div>
               </div>
             </li>
             <li class="item">
               <div class="card">
-                <div class="front"></div>
-                <div class="back"></div>
+                <div class="front">
+                  <img src="./img/main/skill_icon2/etc_f.svg" alt="design" />
+                  <h2>ETC</h2>
+                  <p>
+                    솔직히 아직 부족한 면이 많지만 뽑아주시면 보답하는 마음으로
+                    열심히 단점은 개선하고 장점은 보강하는 사람이 되겠습니다.
+                    감사합니다!
+                  </p>
+                </div>
+                <div class="back">
+                  <img src="./img/main/skill_icon2/etc.svg" alt="design" />
+                  <h2>ETC</h2>
+                </div>
               </div>
             </li>
           </ul>
@@ -175,11 +252,9 @@
       </section>
       <section class="section3">
         <div class="container">
-          <i class="card"></i>
-          <i class="card"></i>
-          <i class="card"></i>
-          <i class="card"></i>
-          <i class="card"></i>
+          <div class="panel on"></div>
+          <div class="panel"></div>
+          <div class="panel"></div>
         </div>
       </section>
     </main>
