@@ -53,6 +53,18 @@ const addHoverListeners = (elements) => {
   });
 };
 
+// *최상단일때 마우스 커서 색상 바꾸기
+
+document.addEventListener("scroll", cursorBG);
+
+function cursorBG() {
+  if (scrollY == 0) {
+    mouseCursor.style.backgroundColor = "white";
+  } else if (scrollY >= vwHeight) {
+    mouseCursor.style.backgroundColor = "black";
+  }
+}
+
 // 모든 필요 요소에 대해 이벤트 리스너 추가
 addHoverListeners(document.querySelectorAll("span"));
 addHoverListeners(document.querySelectorAll("button"));
@@ -73,6 +85,11 @@ $(function () {
 
 // *네비 컨트롤 바 위치에 따라 박스 위치 변경 이벤트
 
+let section1Top = document.querySelector(".section1").offsetTop;
+let section3Top =
+  document.querySelector(".section2").offsetTop +
+  document.querySelector(".section2").offsetTop;
+
 const rnbBox = document.querySelector("header #rnb .on");
 
 document.addEventListener("scroll", rnbBoxOn);
@@ -80,8 +97,10 @@ document.addEventListener("scroll", rnbBoxOn);
 function rnbBoxOn() {
   if (scrollY == 0) {
     rnbBox.style.top = "0px";
-  } else if (scrollY >= vwHeight) {
+  } else if (scrollY >= section1Top && scrollY < section3Top) {
     rnbBox.style.top = "48px";
+  } else if (scrollY >= section3Top) {
+    rnbBox.style.top = "96px";
   }
 }
 
@@ -98,7 +117,13 @@ rnbBtn[0].addEventListener("click", function () {
 
 rnbBtn[1].addEventListener("click", function () {
   window.scroll({
-    top: vwHeight,
+    top: section1Top,
+    behavior: "smooth",
+  });
+});
+rnbBtn[2].addEventListener("click", function () {
+  window.scroll({
+    top: section3Top,
     behavior: "smooth",
   });
 });
@@ -265,86 +290,28 @@ items.forEach((container, i) => {
   });
 });
 
-// *섹션2 네비 바 숨기기 - GSAP
+// *섹션2 네비 바 숨기기/보이기 - GSAP
 
-gsap.to("header #rnb", {
+gsap.to("#rnb", {
   scrollTrigger: {
-    trigger: ".section2",
-    start: "0% 90%",
-    end: "0% 90%",
+    trigger: ".section3",
+    start: "-70% 50%",
+    end: "0% 50%",
     scrub: 1,
     markers: false,
+    onEnter: rnbHide,
+    onLeave: rnbOn,
+    onEnterBack: rnbHide,
+    onLeaveBack: rnbOn,
   },
-  transform: "translateX(110px)",
+  // transform: "translateX(110px)",
 });
+
+function rnbHide() {
+  document.querySelector("#rnb").classList.add("hide");
+}
+function rnbOn() {
+  document.querySelector("#rnb").classList.remove("hide");
+}
 
 // *섹션3
-
-gsap.registerPlugin(ScrollTrigger);
-
-var panels = gsap.utils.toArray(".panel");
-
-panels.pop(); // get rid of the last one (don't need it in the loop)
-panels.forEach((panel, i) => {
-  let tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: panel,
-      start: "bottom bottom",
-      pinSpacing: false,
-      pin: true,
-      scrub: true,
-      // set the transformOrigin so that it's in the center vertically of the viewport when the element's bottom hits the bottom of the viewport
-      onRefresh: () =>
-        gsap.set(panel, {
-          transformOrigin:
-            "center " + (panel.offsetHeight - window.innerHeight / 2) + "px",
-        }),
-    },
-  });
-
-  tl.fromTo(
-    panel,
-    1,
-    { y: 0, rotate: 0, scale: 1, opacity: 1 },
-    { y: 0, rotateX: 0, scale: 0.5, opacity: 0.5 },
-    0
-  ).to(panel, 0.1, { opacity: 0 });
-});
-
-// *메인섹션 텍스트 마우스따라 기울이기
-
-const mouseMove = (e) => {
-  // 마우스 좌표값 가져오기
-  let mousePageX = e.pageX;
-  let mousePageY = e.pageY;
-
-  // 마우스 좌표값 기준점을 가운데로 변경
-  let centerPageX = window.innerWidth / 2 - mousePageX;
-  let centerPageY = window.innerHeight / 2 - mousePageY;
-
-  // centerPage 최소값 -100 최대값 100 설정 (! Point)
-  let maxPageX = Math.max(-200, Math.min(100, centerPageX));
-  let maxPageY = Math.max(-200, Math.min(100, centerPageY));
-
-  // 각도 줄이는 설정
-  let anglePageX = maxPageX * 0.1;
-  let anglePageY = maxPageY * 0.1;
-
-  // 부드럽게 설정
-  let softPageX = 0;
-  let softPageY = 0;
-  softPageX += (anglePageX - softPageX) * 0.4;
-  softPageY += (anglePageY - softPageY) * 0.4;
-
-  // 텍스트 움직이기
-  const imgMove = document.querySelector(".main_section .text_box");
-  imgMove.style.transform =
-    "perspective(600px) rotateX(" +
-    softPageY +
-    "deg) rotateY(" +
-    -softPageX +
-    "deg)";
-};
-
-window.addEventListener("mousemove", mouseMove);
-// = document.addEventListener("mousemove", mouseMove);
