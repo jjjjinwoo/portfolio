@@ -1,5 +1,16 @@
 "use strict";
 
+// *lenis
+
+const lenis = new Lenis();
+
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);
+
 // *처음 1초동안 스크롤 픽스하기
 
 function blockScroll() {
@@ -75,6 +86,24 @@ addHoverListeners(document.querySelectorAll("i"));
 addHoverListeners(document.querySelectorAll("li"));
 addHoverListeners(document.querySelectorAll("a"));
 
+// *햄버거 버튼 클릭시
+
+const menuBtn = document.querySelector("header .menu button");
+const menuIcon = document.querySelector("header .menu_icon");
+let menuNum = 0;
+
+menuBtn.addEventListener("click", menuClick);
+
+function menuClick() {
+  if (menuNum == 0) {
+    menuIcon.classList.add("on");
+    menuNum++;
+  } else {
+    menuIcon.classList.remove("on");
+    menuNum--;
+  }
+}
+
 // *메인섹션 : x,y 축 좌표 - Jquery
 
 $(function () {
@@ -94,6 +123,8 @@ let section3Top = section2Top + section2Width;
 
 const rnbBox = document.querySelector("header #rnb .on");
 
+const windowBottom = document.documentElement.scrollHeight; //전체크기가 아니고 뷰사이즈임
+
 document.addEventListener("scroll", rnbBoxOn);
 
 function rnbBoxOn() {
@@ -101,8 +132,13 @@ function rnbBoxOn() {
     rnbBox.style.top = "0px";
   } else if (scrollY >= section1Top && scrollY < section2Top) {
     rnbBox.style.top = "48px";
-  } else if (scrollY >= section3Top) {
+  } else if (
+    scrollY >= section3Top &&
+    scrollY < document.documentElement.scrollHeight - windowBottom
+  ) {
     rnbBox.style.top = "96px";
+  } else if (scrollY >= document.documentElement.scrollHeight - windowBottom) {
+    rnbBox.style.top = "144px";
   }
 }
 
@@ -123,9 +159,17 @@ rnbBtn[1].addEventListener("click", function () {
     behavior: "smooth",
   });
 });
+
 rnbBtn[2].addEventListener("click", function () {
   window.scroll({
     top: section3Top,
+    behavior: "smooth",
+  });
+});
+
+rnbBtn[3].addEventListener("click", function () {
+  window.scroll({
+    top: document.documentElement.scrollHeight,
     behavior: "smooth",
   });
 });
@@ -411,3 +455,33 @@ function screenOff3() {
     .querySelector(".section3 .panel.third .img_box")
     .classList.remove("on");
 }
+
+// *섹션4 마우스 호버
+
+const sec4Titles = document.querySelectorAll(".section4 .front .title");
+
+for (var i = 0; i < sec4Titles.length; i++) {
+  sec4Titles[i].addEventListener("mouseover", function () {
+    mouseCursorF.classList.add("screen");
+  });
+}
+
+for (var i = 0; i < sec4Titles.length; i++) {
+  sec4Titles[i].addEventListener("mouseout", function () {
+    mouseCursorF.classList.remove("screen");
+  });
+}
+
+// *섹션5 마우스 호버
+
+gsap.to(".section5 .bg_box img", {
+  scrollTrigger: {
+    trigger: ".section5",
+    start: "50% 50%",
+    end: "50% 50%",
+    scrub: 1,
+    markers: true,
+  },
+  opacity: 1,
+  transform: "rotate(0deg)",
+});
