@@ -73,6 +73,7 @@ addHoverListeners(document.querySelectorAll("img"));
 addHoverListeners(document.querySelectorAll("p"));
 addHoverListeners(document.querySelectorAll("i"));
 addHoverListeners(document.querySelectorAll("li"));
+addHoverListeners(document.querySelectorAll("a"));
 
 // *메인섹션 : x,y 축 좌표 - Jquery
 
@@ -84,11 +85,12 @@ $(function () {
 });
 
 // *네비 컨트롤 바 위치에 따라 박스 위치 변경 이벤트
-
 let section1Top = document.querySelector(".section1").offsetTop;
-let section3Top =
-  document.querySelector(".section2").offsetTop +
-  document.querySelector(".section2").offsetTop;
+let section2Top = document.querySelector(".section2").offsetTop;
+let section2Item = document.querySelector(".section2 .item");
+let section2Width =
+  section2Item.offsetWidth * 5 + 40 * 6 - innerWidth + window.innerHeight;
+let section3Top = section2Top + section2Width;
 
 const rnbBox = document.querySelector("header #rnb .on");
 
@@ -97,7 +99,7 @@ document.addEventListener("scroll", rnbBoxOn);
 function rnbBoxOn() {
   if (scrollY == 0) {
     rnbBox.style.top = "0px";
-  } else if (scrollY >= section1Top && scrollY < section3Top) {
+  } else if (scrollY >= section1Top && scrollY < section2Top) {
     rnbBox.style.top = "48px";
   } else if (scrollY >= section3Top) {
     rnbBox.style.top = "96px";
@@ -314,4 +316,98 @@ function rnbOn() {
   document.querySelector("#rnb").classList.remove("hide");
 }
 
-// *섹션3
+// *섹션3 스크롤 트리거 - GSAP
+
+gsap.to(".section3 .bg_text", {
+  scrollTrigger: {
+    trigger: ".section3",
+    start: "0% 50%",
+    end: "100% 50%",
+    scrub: 1,
+    markers: false,
+  },
+  transform: "translateY(0px)",
+});
+
+gsap.to(".section3 .panel.first .screen", {
+  scrollTrigger: {
+    trigger: ".section3 .panel.first",
+    start: "20% 50%",
+    end: "80% 50%",
+    scrub: 1,
+    markers: false,
+    onEnter: screenOn1,
+    onLeave: screenOff1,
+    onEnterBack: screenOn1,
+    onLeaveBack: screenOff1,
+  },
+});
+
+function screenOn1() {
+  document.querySelector(".section3 .panel.first .screen").classList.add("on");
+  document.querySelector(".section3 .panel.first .img_box").classList.add("on");
+}
+function screenOff1() {
+  document
+    .querySelector(".section3 .panel.first .screen")
+    .classList.remove("on");
+  document
+    .querySelector(".section3 .panel.first .img_box")
+    .classList.remove("on");
+}
+
+gsap.to(".section3 .panel.second .screen", {
+  scrollTrigger: {
+    trigger: ".section3 .panel.second",
+    start: "20% 50%",
+    end: "80% 50%",
+    scrub: 1,
+    markers: false,
+    onEnter: screenOn2,
+    onLeave: screenOff2,
+    onEnterBack: screenOn2,
+    onLeaveBack: screenOff2,
+  },
+});
+
+function screenOn2() {
+  document.querySelector(".section3 .panel.second .screen").classList.add("on");
+  document
+    .querySelector(".section3 .panel.second .img_box")
+    .classList.add("on");
+}
+function screenOff2() {
+  document
+    .querySelector(".section3 .panel.second .screen")
+    .classList.remove("on");
+  document
+    .querySelector(".section3 .panel.second .img_box")
+    .classList.remove("on");
+}
+
+gsap.to(".section3 .panel.third .screen", {
+  scrollTrigger: {
+    trigger: ".section3 .panel.third",
+    start: "20% 50%",
+    end: "80% 50%",
+    scrub: 1,
+    markers: false,
+    onEnter: screenOn3,
+    onLeave: screenOff3,
+    onEnterBack: screenOn3,
+    onLeaveBack: screenOff3,
+  },
+});
+
+function screenOn3() {
+  document.querySelector(".section3 .panel.third .screen").classList.add("on");
+  document.querySelector(".section3 .panel.third .img_box").classList.add("on");
+}
+function screenOff3() {
+  document
+    .querySelector(".section3 .panel.third .screen")
+    .classList.remove("on");
+  document
+    .querySelector(".section3 .panel.third .img_box")
+    .classList.remove("on");
+}
