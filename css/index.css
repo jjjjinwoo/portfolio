@@ -553,6 +553,7 @@ header .menu_icon a:hover {
   padding-bottom: 200px;
   position: relative;
   z-index: 1;
+  padding-top: 120px;
 }
 .section1 .top {
   display: flex;
@@ -1108,6 +1109,9 @@ footer .copy {
     top: 0px;
     right: 44%;
   }
+  .section1 .container {
+    padding-top: 200px;
+  }
   .section1 .img_box img {
     width: 300px;
   }
@@ -1219,19 +1223,19 @@ footer .copy {
   }
   .section2 .item {
     min-width: 100%;
-    aspect-ratio: 2 / 3;
+    /* aspect-ratio: 2 / 3; */
   }
   .section2 .item .front,
   .section2 .item .back {
     min-width: 100%;
     padding: 20px;
-    aspect-ratio: 2 / 3;
+    /* aspect-ratio: 2 / 3; */
   }
   .section2 .item h2 {
     font-size: 26px;
   }
   .section2 .item .front p {
-    font-size: 16px;
+    font-size: 18px;
   }
   .section3 .img_box {
     width: 100%;
@@ -1263,5 +1267,15 @@ footer .copy {
   footer .container {
     flex-direction: column;
     gap: 20px;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .section2 .item {
+    aspect-ratio: 2 / 3;
+  }
+  .section2 .item .front,
+  .section2 .item .back {
+    aspect-ratio: 2 / 3;
   }
 }
