@@ -71,7 +71,7 @@ document.addEventListener("scroll", cursorBG);
 function cursorBG() {
   if (scrollY == 0) {
     mouseCursor.style.backgroundColor = "white";
-  } else if (scrollY >= vwHeight) {
+  } else if (scrollY >= vwHeightHalf) {
     mouseCursor.style.backgroundColor = "black";
   }
 }
@@ -114,6 +114,7 @@ $(function () {
 });
 
 // *네비 컨트롤 바 위치에 따라 박스 위치 변경 이벤트
+
 let section1Top = document.querySelector(".section1").offsetTop;
 let section2Top = document.querySelector(".section2").offsetTop;
 let section2Item = document.querySelector(".section2 .item");
@@ -472,16 +473,22 @@ for (var i = 0; i < sec4Titles.length; i++) {
   });
 }
 
-// *섹션5 마우스 호버
+// *섹션5
 
-gsap.to(".section5 .bg_box img", {
-  scrollTrigger: {
-    trigger: ".section5",
-    start: "50% 50%",
-    end: "50% 50%",
-    scrub: 1,
-    markers: true,
-  },
-  opacity: 1,
-  transform: "rotate(0deg)",
-});
+document.addEventListener("scroll", sec5TextOn);
+const sec5Title = document.querySelector(".section5 .title");
+const sec5Text = document.querySelector(".section5 .text");
+
+function sec5TextOn() {
+  if (scrollY >= document.documentElement.scrollHeight - windowBottom) {
+    sec5Title.style.opacity = "1";
+    sec5Title.style.transform = "translateY(0px)";
+    setTimeout(() => {
+      sec5Text.style.opacity = "1";
+      sec5Text.style.transform = "translateY(0px)";
+    }, 200);
+    setTimeout(() => {
+      sec5Title.style.backgroundPositionY = "-80px";
+    }, 1000);
+  }
+}
