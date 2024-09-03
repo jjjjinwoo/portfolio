@@ -241,7 +241,7 @@ gsap.to(".main_section", {
     scrub: 1,
     markers: false,
   },
-  "border-radius": "50%",
+  "border-radius": "0 0 50vw 50vw",
 });
 
 // *섹션1 이미지 스크롤 트리거 - GSAP
@@ -499,26 +499,41 @@ for (var i = 0; i < sec4Titles.length; i++) {
 
 // *섹션5
 
-document.addEventListener("scroll", sec5TextOn);
-const sec5Title = document.querySelector(".section5 .title");
-const sec5Text = document.querySelector(".section5 .text");
+ScrollTrigger.matchMedia({
+  "(min-width: 1024px)": function () {
+    gsap.to(".section5 .title", {
+      scrollTrigger: {
+        trigger: ".section5",
+        start: "20% 50%",
+        end: "20% 50%",
+        scrub: 1,
+        markers: false,
+      },
+      backgroundPositionY: "-80px",
+      "letter-spacing": "10px",
+    });
+  },
+  "(max-width: 1023px)": function () {
+    gsap.to(".section5 .title", {
+      scrollTrigger: {
+        trigger: ".section5",
+        start: "20% 50%",
+        end: "20% 50%",
+        scrub: 1,
+        markers: false,
+      },
+      backgroundPositionY: "-244px",
+    });
+  },
+});
 
-function sec5TextOn() {
-  if (scrollY >= document.documentElement.scrollHeight - windowBottom) {
-    sec5Title.style.opacity = "1";
-    sec5Title.style.transform = "translateY(0px)";
-    setTimeout(() => {
-      sec5Text.style.opacity = "1";
-      sec5Text.style.transform = "translateY(0px)";
-    }, 200);
-    if (window.matchMedia("(min-width: 1024px)").matches) {
-      setTimeout(() => {
-        sec5Title.style.backgroundPositionY = "-80px";
-      }, 1000);
-    } else {
-      setTimeout(() => {
-        sec5Title.style.backgroundPositionY = "-244px";
-      }, 1000);
-    }
-  }
-}
+gsap.to(".section5 .bg_box img", {
+  scrollTrigger: {
+    trigger: ".section5",
+    start: "50% 50%",
+    end: "50% 50%",
+    scrub: 3,
+    markers: false,
+  },
+  scale: "1.1",
+});
