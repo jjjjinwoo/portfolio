@@ -98,9 +98,15 @@ function menuClick() {
   if (menuNum == 0) {
     menuIcon.classList.add("on");
     menuNum++;
+    if (window.matchMedia("(max-width: 767px)").matches) {
+      document.querySelector("#rnb").style.opacity = "0";
+    }
   } else {
     menuIcon.classList.remove("on");
     menuNum--;
+    if (window.matchMedia("(max-width: 767px)").matches) {
+      document.querySelector("#rnb").style.opacity = "1";
+    }
   }
 }
 
@@ -505,8 +511,14 @@ function sec5TextOn() {
       sec5Text.style.opacity = "1";
       sec5Text.style.transform = "translateY(0px)";
     }, 200);
-    setTimeout(() => {
-      sec5Title.style.backgroundPositionY = "-80px";
-    }, 1000);
+    if (window.matchMedia("(min-width: 1024px)").matches) {
+      setTimeout(() => {
+        sec5Title.style.backgroundPositionY = "-80px";
+      }, 1000);
+    } else {
+      setTimeout(() => {
+        sec5Title.style.backgroundPositionY = "-244px";
+      }, 1000);
+    }
   }
 }

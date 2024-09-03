@@ -195,6 +195,7 @@ header .menu_icon {
   width: 0px;
   overflow: hidden;
   transition: 1s;
+  z-index: 101;
 }
 header .menu_icon.on {
   width: 122px;
@@ -1007,6 +1008,10 @@ header .menu_icon a:hover {
   width: 100%;
   opacity: 0.1;
   overflow: hidden;
+  display: flex;
+}
+.section5 .bg_box img {
+  width: 100%;
 }
 .section5 .text_box {
   display: flex;
@@ -1138,6 +1143,9 @@ footer .copy {
   .section3 .btn_box.on {
     opacity: 1;
   }
+  .section3 .img_box .btn_box a {
+    background-color: black;
+  }
   .section4 .card .front .title::after {
     display: none;
   }
@@ -1153,7 +1161,26 @@ footer .copy {
   .section4 .card .btn_box {
     margin-right: 0px;
   }
+  .section5 {
+    height: 740px;
+  }
   .section5 .title br {
     display: block;
+  }
+  .section5 .title {
+    background-size: 900px 500px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  header .logo span {
+    display: none;
+  }
+  .main_section .text_box .title {
+    flex-direction: column;
+    align-items: center;
+  }
+  .main_section .scroll .line {
+    display: none;
   }
 }
