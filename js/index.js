@@ -339,19 +339,23 @@ items.forEach((container, i) => {
 
 // *섹션2 네비 바 숨기기/보이기 - GSAP
 
-gsap.to("#rnb", {
-  scrollTrigger: {
-    trigger: ".section3",
-    start: "-70% 50%",
-    end: "0% 50%",
-    scrub: 1,
-    markers: false,
-    onEnter: rnbHide,
-    onLeave: rnbOn,
-    onEnterBack: rnbHide,
-    onLeaveBack: rnbOn,
+ScrollTrigger.matchMedia({
+  "(min-width: 1024px)": function () {
+    gsap.to("#rnb", {
+      scrollTrigger: {
+        trigger: ".section3",
+        start: "-70% 50%",
+        end: "0% 50%",
+        scrub: 1,
+        markers: false,
+        onEnter: rnbHide,
+        onLeave: rnbOn,
+        onEnterBack: rnbHide,
+        onLeaveBack: rnbOn,
+      },
+      // transform: "translateX(110px)",
+    });
   },
-  // transform: "translateX(110px)",
 });
 
 function rnbHide() {
@@ -391,6 +395,7 @@ gsap.to(".section3 .panel.first .screen", {
 function screenOn1() {
   document.querySelector(".section3 .panel.first .screen").classList.add("on");
   document.querySelector(".section3 .panel.first .img_box").classList.add("on");
+  document.querySelector(".section3 .panel.first .btn_box").classList.add("on");
 }
 function screenOff1() {
   document
@@ -398,6 +403,9 @@ function screenOff1() {
     .classList.remove("on");
   document
     .querySelector(".section3 .panel.first .img_box")
+    .classList.remove("on");
+  document
+    .querySelector(".section3 .panel.first .btn_box")
     .classList.remove("on");
 }
 
@@ -420,6 +428,9 @@ function screenOn2() {
   document
     .querySelector(".section3 .panel.second .img_box")
     .classList.add("on");
+  document
+    .querySelector(".section3 .panel.second .btn_box")
+    .classList.add("on");
 }
 function screenOff2() {
   document
@@ -427,6 +438,9 @@ function screenOff2() {
     .classList.remove("on");
   document
     .querySelector(".section3 .panel.second .img_box")
+    .classList.remove("on");
+  document
+    .querySelector(".section3 .panel.second .btn_box")
     .classList.remove("on");
 }
 
@@ -447,6 +461,7 @@ gsap.to(".section3 .panel.third .screen", {
 function screenOn3() {
   document.querySelector(".section3 .panel.third .screen").classList.add("on");
   document.querySelector(".section3 .panel.third .img_box").classList.add("on");
+  document.querySelector(".section3 .panel.third .btn_box").classList.add("on");
 }
 function screenOff3() {
   document
@@ -454,6 +469,9 @@ function screenOff3() {
     .classList.remove("on");
   document
     .querySelector(".section3 .panel.third .img_box")
+    .classList.remove("on");
+  document
+    .querySelector(".section3 .panel.third .btn_box")
     .classList.remove("on");
 }
 

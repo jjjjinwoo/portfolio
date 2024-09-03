@@ -545,11 +545,12 @@ header .menu_icon a:hover {
 
 .section1 {
   position: relative;
-  width: 100%;
   background-color: white;
+  width: 100%;
+  overflow-x: hidden;
 }
 .section1 .container {
-  padding: 280px 0;
+  padding: 280px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -651,10 +652,19 @@ header .menu_icon a:hover {
   line-height: 34px;
   font-weight: 300;
 }
+.section1 .bg_text_box {
+  position: absolute;
+  left: 0;
+  overflow: hidden;
+  width: 500px;
+  height: 1715px;
+  bottom: 0;
+}
 .section1 .bg_text {
   position: absolute;
   width: 500px;
   bottom: -100px;
+  left: -8px;
   transform: translateY(-100px);
 }
 
@@ -749,6 +759,8 @@ header .menu_icon a:hover {
   position: relative;
   padding-bottom: 100px;
   background-color: white;
+  width: 100%;
+  overflow-x: hidden;
 }
 .section3 .container {
   position: relative;
@@ -837,6 +849,7 @@ header .menu_icon a:hover {
 .section3 .text_box {
   margin-top: 50px;
   text-align: center;
+  z-index: 1;
 }
 .section3 .text_box .title {
   font-size: 42px;
@@ -856,10 +869,18 @@ header .menu_icon a:hover {
   background-color: #ccc;
   height: 10px;
 }
+.section3 .bg_text_box {
+  position: absolute;
+  right: 0;
+  overflow: hidden;
+  width: 500px;
+  height: 3135px;
+  bottom: 0;
+}
 .section3 .bg_text {
   position: absolute;
   width: 500px;
-  right: 0;
+  right: -8px;
   bottom: -100px;
   transform: translateY(-500px);
 }
@@ -1017,6 +1038,9 @@ header .menu_icon a:hover {
   opacity: 0;
   transform: translateY(20px);
 }
+.section5 .title br {
+  display: none;
+}
 .section5 .text {
   font-size: 18px;
   font-weight: 300;
@@ -1038,6 +1062,8 @@ footer .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 footer .left {
   display: flex;
@@ -1054,4 +1080,81 @@ footer img {
 footer .copy {
   color: white;
   opacity: 0.5;
+}
+
+@media (hover: hover) {
+  #rnb > button:hover {
+    background-color: white;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .section1 .img_box img {
+    width: 400px;
+  }
+  .section1 .top {
+    gap: 80px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  #cursor {
+    display: none;
+  }
+  #cursorF {
+    display: none;
+  }
+  #rnb {
+    transform: rotate(-90deg);
+    top: 0px;
+    right: 44%;
+  }
+  .section1 .img_box img {
+    width: 300px;
+  }
+  .section1 .top {
+    gap: 40px;
+  }
+  .section3 .img_box:after {
+    display: none;
+  }
+  .section3 .img_box .monitor {
+    display: none;
+  }
+  .section3 .img_box .screen {
+    scale: 0.9;
+  }
+  .section3 .img_box .screen.on {
+    filter: brightness(0.5);
+  }
+  .section3 .text_box {
+    margin-top: 0px;
+  }
+  .section3 .panel {
+    height: 1000px;
+  }
+  .section3 .pin {
+    margin-bottom: 0px;
+  }
+  .section3 .btn_box.on {
+    opacity: 1;
+  }
+  .section4 .card .front .title::after {
+    display: none;
+  }
+  .section4 .card .container {
+    flex-direction: column;
+    padding: 20px;
+    justify-content: center;
+    gap: 24px;
+  }
+  .section4 .card .text {
+    margin-right: 0px;
+  }
+  .section4 .card .btn_box {
+    margin-right: 0px;
+  }
+  .section5 .title br {
+    display: block;
+  }
 }
