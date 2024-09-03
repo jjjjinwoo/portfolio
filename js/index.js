@@ -85,6 +85,7 @@ addHoverListeners(document.querySelectorAll("p"));
 addHoverListeners(document.querySelectorAll("i"));
 addHoverListeners(document.querySelectorAll("li"));
 addHoverListeners(document.querySelectorAll("a"));
+addHoverListeners(document.querySelectorAll(".section4 .card_wrap"));
 
 // *햄버거 버튼 클릭시
 
@@ -483,7 +484,7 @@ function screenOff3() {
 
 // *섹션4 마우스 호버
 
-const sec4Titles = document.querySelectorAll(".section4 .front .title");
+const sec4Titles = document.querySelectorAll(".section4 .card");
 
 for (var i = 0; i < sec4Titles.length; i++) {
   sec4Titles[i].addEventListener("mouseover", function () {

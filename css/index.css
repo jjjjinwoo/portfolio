@@ -83,18 +83,20 @@ a {
   animation-fill-mode: forwards;
   opacity: 0;
   transition: background-color 0.5s;
+  border: 1px solid white;
 }
 #cursorF {
   position: fixed;
   width: 20px;
   height: 20px;
   border-radius: 100%;
-  background-color: aquamarine;
+  background-color: #00ffa3;
   z-index: 901;
   mix-blend-mode: exclusion;
   pointer-events: none;
   transform: translate(-50%, -50%);
-  transition: width 0.5s, height 0.5s, background-color 0.5s, border-radius 0.5s;
+  transition: width 0.5s, height 0.5s, background-color 0.5s, border-radius 0.5s,
+    transform 0.5s;
   transform-origin: 50% 50%;
   animation-name: opacity;
   animation-delay: 1s;
@@ -113,6 +115,7 @@ a {
   height: 216px;
   background-color: #00ffa3;
   mix-blend-mode: normal;
+  transform: translate(-50%, -150%);
 }
 
 /* 헤더 */
@@ -158,15 +161,19 @@ header .logo span {
   color: white;
   font-size: 20px;
 }
+header .menu {
+  display: flex;
+  align-items: center;
+}
 header .menu button {
-  width: 56px;
+  width: 44px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 16px;
+  gap: 12px;
 }
 header .menu button div {
-  height: 4px;
+  height: 3px;
   background-color: white;
   transition: 0.5s;
 }
@@ -187,7 +194,7 @@ header .menu button:hover div:nth-child(3) {
 }
 header .menu_icon {
   position: absolute;
-  right: 118px;
+  right: 100px;
   filter: invert(1);
   display: flex;
   gap: 36px;
@@ -823,13 +830,13 @@ header .menu_icon a:hover {
 .section3 .img_box .btn_box {
   position: absolute;
   top: 275px;
-  left: 553px;
+  left: 520px;
   display: flex;
   gap: 16px;
   opacity: 0;
   transition: 0.5s;
   z-index: 99;
-  width: 300px;
+  width: 400px;
   justify-content: center;
 }
 .section3 .img_box .screen_box:hover .btn_box {
@@ -967,8 +974,8 @@ header .menu_icon a:hover {
   gap: 16px;
   transition: 0.5s;
   z-index: 99;
-  width: 300px;
-  justify-content: center;
+  width: 400px;
+  justify-content: flex-end;
   margin-right: 60px;
 }
 .section4 .card .btn_box a {
@@ -1177,6 +1184,7 @@ footer .copy {
   }
   .section4 .card .btn_box {
     margin-right: 0px;
+    justify-content: center;
   }
   .section5 {
     height: 740px;
