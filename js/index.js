@@ -495,8 +495,14 @@ for (var i = 0; i < sec4Titles.length; i++) {
 for (var i = 0; i < sec4Titles.length; i++) {
   sec4Titles[i].addEventListener("mouseout", function () {
     mouseCursorF.classList.remove("screen");
+    mouseCursorF.style.backgroundImage = "url(#)";
   });
 }
+
+sec4Titles[0].addEventListener("mouseover", function () {
+  mouseCursorF.style.backgroundImage =
+    "url(../img/main/mockup_image/ilovepdf.png)";
+});
 
 // *섹션5
 
