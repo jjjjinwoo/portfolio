@@ -501,7 +501,7 @@ for (var i = 0; i < sec4Titles.length; i++) {
 
 sec4Titles[0].addEventListener("mouseover", function () {
   mouseCursorF.style.backgroundImage =
-    "url(../img/main/mockup_image/ilovepdf.png)";
+    "url(./img/main/mockup_image/ilovepdf.png)";
 });
 
 // *섹션5
