@@ -665,6 +665,7 @@ header .menu_icon a:hover {
   width: 500px;
   height: 1715px;
   bottom: 0;
+  overflow: hidden;
 }
 .section1 .bg_text {
   position: absolute;
