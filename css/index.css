@@ -64,6 +64,15 @@ a {
   opacity: 0.5;
   pointer-events: none;
 }
+#new {
+  background-color: #ffe200;
+  color: white;
+  font-weight: 700;
+  padding: 4px 11px;
+  padding-top: 5px;
+  border-radius: 16px;
+  margin-top: 24px;
+}
 
 /* 마우스 커서 */
 
