@@ -89,7 +89,7 @@ addHoverListeners(document.querySelectorAll(".section4 .card_wrap"));
 
 // *햄버거 버튼 클릭시
 
-const menuBtn = document.querySelector("header .menu button");
+const menuBtn = document.querySelector("header .menu .menu_btn");
 const menuIcon = document.querySelector("header .menu_icon");
 let menuNum = 0;
 
