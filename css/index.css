@@ -612,7 +612,7 @@ header .menu_icon a:hover {
   line-height: 32px;
   font-weight: 300;
   max-width: 600px;
-  margin-bottom: 74px;
+  margin-bottom: 68px;
   opacity: 0;
   transform: translateY(20px);
   transition: 0.5s;
@@ -624,10 +624,13 @@ header .menu_icon a:hover {
 .section1 .top .skill_box {
   display: flex;
   gap: 20px;
+  width: 376px;
+  flex-wrap: wrap;
 }
 .section1 .top .skill_box > i {
-  width: 50px;
-  height: 50px;
+  position: relative;
+  width: 46px;
+  height: 46px;
   background-color: #f7f7f7;
   border-radius: 5px;
   opacity: 0;
@@ -636,13 +639,33 @@ header .menu_icon a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 0.3s;
 }
 .section1 .top .skill_box > i > img {
   width: 60%;
+  transition: 0.3s;
+}
+.section1 .top .skill_box > i > span {
+  text-align: center;
+  opacity: 0;
+  position: absolute;
+  font-size: 10px;
+  transition: 0.3s;
+  color: white;
 }
 .section1 .top .skill_box > i.scroll {
   opacity: 1;
   transform: translateX(0px);
+}
+.section1 .top .skill_box > i:hover {
+  background-color: black;
+  scale: 1.2;
+}
+.section1 .top .skill_box > i:hover > img {
+  opacity: 0;
+}
+.section1 .top .skill_box > i:hover > span {
+  opacity: 1;
 }
 .section1 .bottom {
   margin-top: 250px;
@@ -881,7 +904,7 @@ header .menu_icon a:hover {
   box-sizing: border-box;
 }
 .section3 .text_box .text span {
-  color: #8b8b8b;
+  color: #646464;
 }
 .section3 .text_box .text i {
   width: 1px;
@@ -971,7 +994,7 @@ header .menu_icon a:hover {
   margin-right: 60px;
 }
 .section4 .card .text span {
-  color: #8b8b8b;
+  color: #646464;
 }
 .section4 .card .text i {
   width: 1px;
@@ -1142,6 +1165,10 @@ footer .copy {
     text-align: center;
     margin-top: 44px;
   }
+  .section1 .top .skill_box {
+    width: 376px;
+    justify-content: center;
+  }
   .section1 .bottom .text_box {
     flex-direction: column;
     text-align: center;
@@ -1290,6 +1317,9 @@ footer .copy {
 }
 
 @media screen and (max-width: 479px) {
+  .section1 .top .skill_box {
+    width: 244px;
+  }
   .section2 .item {
     aspect-ratio: 2 / 3;
   }
