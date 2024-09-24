@@ -1107,6 +1107,9 @@ footer .copy {
 }
 
 @media screen and (max-width: 1023px) {
+  body {
+    cursor: auto;
+  }
   #cursor {
     display: none;
   }
