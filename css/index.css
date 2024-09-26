@@ -905,6 +905,8 @@ header .menu_icon a:hover {
 }
 .section3 .text_box .text span {
   color: #646464;
+  line-height: 1.4;
+  padding: 0 20px;
 }
 .section3 .text_box .text i {
   width: 1px;
@@ -995,6 +997,8 @@ header .menu_icon a:hover {
 }
 .section4 .card .text span {
   color: #646464;
+  text-align: center;
+  line-height: 1.4;
 }
 .section4 .card .text i {
   width: 1px;
@@ -1008,7 +1012,7 @@ header .menu_icon a:hover {
   gap: 16px;
   transition: 0.5s;
   z-index: 99;
-  width: 400px;
+  /* width: 400px; */
   justify-content: flex-end;
   margin-right: 60px;
 }
@@ -1329,5 +1333,24 @@ footer .copy {
   .section2 .item .front,
   .section2 .item .back {
     aspect-ratio: 2 / 3;
+  }
+  .section3 .img_box .btn_box {
+    top: 28vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .section3 .text_box .title {
+    font-size: 34px;
+  }
+  .section4 .card_wrap {
+    height: 250px;
+  }
+  .section4 .card .btn_box {
+    flex-direction: column;
+    align-items: center;
+  }
+  .section5 .title {
+    font-size: 80px;
   }
 }
