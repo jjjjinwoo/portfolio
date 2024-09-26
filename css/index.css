@@ -105,7 +105,7 @@ a {
   pointer-events: none;
   transform: translate(-50%, -50%);
   transition: width 0.5s, height 0.5s, background-color 0.5s, border-radius 0.5s,
-    transform 0.5s;
+    transform 0.5s, background-image 0.5s;
   transform-origin: 50% 50%;
   animation-name: opacity;
   animation-delay: 1s;
@@ -780,7 +780,7 @@ header .menu_icon a:hover {
 .section2 .item .front p {
   text-align: center;
   font-size: 18px;
-  line-height: 36px;
+  line-height: 2;
   font-weight: 200;
   color: #747474;
 }
@@ -810,9 +810,10 @@ header .menu_icon a:hover {
   opacity: 1;
 }
 .section3 .panel {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 1200px;
-  background-color: white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -924,8 +925,8 @@ header .menu_icon a:hover {
   position: absolute;
   width: 500px;
   right: -8px;
-  bottom: -100px;
-  transform: translateY(-500px);
+  bottom: 0px;
+  /* transform: translateY(-500px); */
 }
 
 /* 섹션4 */
@@ -1288,7 +1289,7 @@ footer .copy {
     font-size: 26px;
   }
   .section2 .item .front p {
-    font-size: 18px;
+    font-size: 16px;
   }
   .section3 .img_box {
     width: 100%;
@@ -1308,7 +1309,7 @@ footer .copy {
     scale: 0.8;
   }
   .section3 .text_box .text {
-    font-size: 14px;
+    font-size: 16px;
     gap: 6px;
   }
   .section3 .panel {
@@ -1327,6 +1328,12 @@ footer .copy {
   .section1 .top .skill_box {
     width: 244px;
   }
+  .section1 .bg_text_box {
+    width: 100%;
+  }
+  .section1 .bg_text {
+    width: 106%;
+  }
   .section2 .item {
     aspect-ratio: 2 / 3;
   }
@@ -1343,6 +1350,13 @@ footer .copy {
   .section3 .text_box .title {
     font-size: 34px;
   }
+  .section3 .bg_text_box {
+    width: 100%;
+  }
+  .section3 .bg_text {
+    width: 106%;
+  }
+
   .section4 .card_wrap {
     height: 250px;
   }

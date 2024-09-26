@@ -372,18 +372,36 @@ function rnbOn() {
   document.querySelector("#rnb").classList.remove("hide");
 }
 
+const sec2Card = document.querySelectorAll(".section2 .item .card");
+
+let sec2CardSum = 0;
+
+for (var i = 0; i < sec2Card.length; i++) {
+  sec2Card[i].addEventListener("click", function () {
+    if (window.innerWidth <= 1024) {
+      if (sec2CardSum == 0) {
+        this.style.transform = "rotateY(180deg)";
+        sec2CardSum++;
+      } else {
+        this.style.transform = "rotateY(0deg)";
+        sec2CardSum--;
+      }
+    }
+  });
+}
+
 // *섹션3 스크롤 트리거 - GSAP
 
-gsap.to(".section3 .bg_text", {
-  scrollTrigger: {
-    trigger: ".section3",
-    start: "0% 50%",
-    end: "100% 50%",
-    scrub: 1,
-    markers: false,
-  },
-  transform: "translateY(0px)",
-});
+// gsap.to(".section3 .bg_text", {
+//   scrollTrigger: {
+//     trigger: ".section3",
+//     start: "0% 50%",
+//     end: "100% 50%",
+//     scrub: 1,
+//     markers: false,
+//   },
+//   transform: "translateY(0px)",
+// });
 
 gsap.to(".section3 .panel.first .screen", {
   scrollTrigger: {
@@ -495,7 +513,8 @@ for (var i = 0; i < sec4Titles.length; i++) {
 for (var i = 0; i < sec4Titles.length; i++) {
   sec4Titles[i].addEventListener("mouseout", function () {
     mouseCursorF.classList.remove("screen");
-    mouseCursorF.style.backgroundImage = "url(#)";
+    mouseCursorF.style.backgroundImage =
+      "url(./img/main/mockup_image/blank.png)";
   });
 }
 
