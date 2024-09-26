@@ -1,6 +1,6 @@
 "use strict";
 
-// *lenis
+// lenis :
 
 const lenis = new Lenis();
 
@@ -11,7 +11,7 @@ function raf(time) {
 
 requestAnimationFrame(raf);
 
-// *처음 1초동안 스크롤 픽스하기
+// 메인 : 처음 1초동안 스크롤 픽스하기
 
 function blockScroll() {
   document.body.classList.add("no-scroll");
@@ -27,11 +27,11 @@ blockScroll();
 // Unblock scroll after 1 second
 setTimeout(unblockScroll, 1000);
 
-// *스크롤 트리거 불러오기(플러그인 안정화)
+// 스크롤 트리거 불러오기 :플러그인 안정화
 
 gsap.registerPlugin(ScrollTrigger);
 
-// *마우스 커서 - JS
+// 공통 : 마우스 커서 - JS
 
 let mouseCursor = document.querySelector("#cursor");
 let mouseCursorF = document.querySelector("#cursorF");
@@ -64,7 +64,7 @@ const addHoverListeners = (elements) => {
   });
 };
 
-// *최상단일때 마우스 커서 색상 바꾸기
+// 공통 : 최상단일때 마우스 커서 색상 바꾸기
 
 document.addEventListener("scroll", cursorBG);
 
@@ -87,7 +87,7 @@ addHoverListeners(document.querySelectorAll("li"));
 addHoverListeners(document.querySelectorAll("a"));
 addHoverListeners(document.querySelectorAll(".section4 .card_wrap"));
 
-// *햄버거 버튼 클릭시
+// 헤더 : 햄버거 버튼 클릭시
 
 const menuBtn = document.querySelector("header .menu .menu_btn");
 const menuIcon = document.querySelector("header .menu_icon");
@@ -111,7 +111,7 @@ function menuClick() {
   }
 }
 
-// *메인섹션 : x,y 축 좌표 - Jquery
+// 메인섹션 : x,y 축 좌표 - Jquery
 
 $(function () {
   $(document).on("mousemove", function (e) {
@@ -120,7 +120,7 @@ $(function () {
   });
 });
 
-// *네비 컨트롤 바 위치에 따라 박스 위치 변경 이벤트
+// RNB : 네비 컨트롤 바 위치에 따라 박스 위치 변경 이벤트
 
 let section1Top = document.querySelector(".section1").offsetTop;
 let section2Top = document.querySelector(".section2").offsetTop;
@@ -150,7 +150,7 @@ function rnbBoxOn() {
   }
 }
 
-// *네비 컨트롤 바 누르면 섹션 이동
+// RNB : 네비 컨트롤 바 누르면 섹션 이동
 
 const rnbBtn = document.querySelectorAll("header #rnb button");
 
@@ -182,7 +182,7 @@ rnbBtn[3].addEventListener("click", function () {
   });
 });
 
-// *헤더 색상 반전 + 마우스 커서
+// 헤더 : 색상 반전 + 마우스 커서
 
 let vwHeight = window.innerHeight;
 let vwHeightHalf = window.innerHeight / 2;
@@ -198,7 +198,7 @@ function invertHeader() {
   }
 }
 
-// *메인섹션 텍스트 - TypeIt
+// 메인 : 텍스트 - TypeIt
 
 setTimeout(() => {
   new TypeIt("#callback", {
@@ -208,7 +208,7 @@ setTimeout(() => {
   }).go();
 }, 1500);
 
-// *메인섹션 스크롤 트리거 - GSAP
+// 메인 : 스크롤 트리거 - GSAP
 
 gsap.to(".main_section .video_box", {
   scrollTrigger: {
@@ -245,7 +245,7 @@ gsap.to(".main_section", {
   "border-radius": "0 0 50vw 50vw",
 });
 
-// *섹션1 이미지 스크롤 트리거 - GSAP
+// 섹션1 : 이미지 스크롤 트리거 - GSAP
 
 gsap.to(".section1 .top .img_box", {
   scrollTrigger: {
@@ -269,7 +269,7 @@ gsap.to(".section1 .bg_text", {
   transform: "translateY(160px)",
 });
 
-// *섹션1 텍스트 애니메이션 - JS
+// 섹션1 : 텍스트 애니메이션 - JS
 
 const sec1Pin = document.querySelector(".section1 .top .text_box .pin");
 const sec1Title = document.querySelector(".section1 .top .text_box .title");
@@ -304,7 +304,7 @@ function invertHeader2() {
   }
 }
 
-// *섹션1 텍스트 애니메이션 - GSAP
+// 섹션1 : 텍스트 애니메이션 - GSAP
 
 gsap.to(".section1 .bottom", {
   scrollTrigger: {
@@ -316,7 +316,7 @@ gsap.to(".section1 .bottom", {
   transform: "translateY(0px)",
 });
 
-// *섹션2 가로 스크롤 트리거 - GSAP
+// 섹션2 : 가로 스크롤 트리거 - GSAP
 
 let items = gsap.utils.toArray(".items"),
   pageWrapper = document.querySelector(".section2");
@@ -344,7 +344,7 @@ items.forEach((container, i) => {
   });
 });
 
-// *섹션2 네비 바 숨기기/보이기 - GSAP
+// 섹션2 : 네비 바 숨기기/보이기 - GSAP
 
 ScrollTrigger.matchMedia({
   "(min-width: 1024px)": function () {
@@ -372,6 +372,8 @@ function rnbOn() {
   document.querySelector("#rnb").classList.remove("hide");
 }
 
+// 섹션2 : 카드 클릭시 뒤집기 (모바일 한정)
+
 const sec2Card = document.querySelectorAll(".section2 .item .card");
 
 let sec2CardSum = 0;
@@ -390,7 +392,7 @@ for (var i = 0; i < sec2Card.length; i++) {
   });
 }
 
-// *섹션3 스크롤 트리거 - GSAP
+// 섹션3 : 스크롤 트리거 - GSAP
 
 // gsap.to(".section3 .bg_text", {
 //   scrollTrigger: {
@@ -500,7 +502,7 @@ function screenOff3() {
     .classList.remove("on");
 }
 
-// *섹션4 마우스 호버
+// 섹션4 : 마우스 호버
 
 const sec4Titles = document.querySelectorAll(".section4 .card");
 
@@ -527,7 +529,27 @@ sec4Titles[1].addEventListener("mouseover", function () {
     "url(./img/main/mockup_image/ilovepdf.png)";
 });
 
-// *섹션5
+// 섹션4 : 카드 클릭시 뒤집기 (모바일 한정)
+
+const sec4Card = document.querySelectorAll(".section4 .card");
+
+let sec4CardSum = 0;
+
+for (var i = 0; i < sec4Card.length; i++) {
+  sec4Card[i].addEventListener("click", function () {
+    if (window.innerWidth <= 1024) {
+      if (sec4CardSum == 0) {
+        this.style.transform = "rotateX(180deg)";
+        sec4CardSum++;
+      } else {
+        this.style.transform = "rotateX(0deg)";
+        sec4CardSum--;
+      }
+    }
+  });
+}
+
+// 섹션5 :
 
 ScrollTrigger.matchMedia({
   "(min-width: 1024px)": function () {

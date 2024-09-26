@@ -1109,10 +1109,14 @@ footer .container {
 footer .left {
   display: flex;
   align-items: center;
+  column-gap: 20px;
+}
+footer .left > div {
+  display: flex;
+  align-items: center;
 }
 footer span {
   color: white;
-  margin-right: 20px;
 }
 footer img {
   width: 20px;
@@ -1366,5 +1370,11 @@ footer .copy {
   }
   .section5 .title {
     font-size: 80px;
+  }
+  footer .left {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 16px;
   }
 }
