@@ -122,63 +122,65 @@ $(function () {
 
 // RNB : 네비 컨트롤 바 위치에 따라 박스 위치 변경 이벤트
 
-let section1Top = document.querySelector(".section1").offsetTop;
-let section2Top = document.querySelector(".section2").offsetTop;
-let section2Item = document.querySelector(".section2 .item");
-let section2Width =
-  section2Item.offsetWidth * 5 + 40 * 6 - innerWidth + window.innerHeight;
-let section3Top = section2Top + section2Width;
+window.addEventListener("load", function () {
+  let section1Top = document.querySelector(".section1").offsetTop;
+  let section2Top = document.querySelector(".section2").offsetTop;
+  let section3Top = document.querySelector(".section3").offsetTop;
 
-const rnbBox = document.querySelector("header #rnb .on");
+  const rnbBox = document.querySelector("header #rnb .on");
 
-const windowBottom = document.documentElement.scrollHeight; //전체크기가 아니고 뷰사이즈임
+  const windowBottom = document.documentElement.scrollHeight; //전체크기가 아니고 뷰사이즈임
 
-document.addEventListener("scroll", rnbBoxOn);
+  document.addEventListener("scroll", rnbBoxOn);
 
-function rnbBoxOn() {
-  if (scrollY == 0) {
-    rnbBox.style.top = "0px";
-  } else if (scrollY >= section1Top && scrollY < section2Top) {
-    rnbBox.style.top = "48px";
-  } else if (
-    scrollY >= section3Top &&
-    scrollY < document.documentElement.scrollHeight - windowBottom
-  ) {
-    rnbBox.style.top = "96px";
-  } else if (scrollY >= document.documentElement.scrollHeight - windowBottom) {
-    rnbBox.style.top = "144px";
+  function rnbBoxOn() {
+    if (scrollY == 0) {
+      rnbBox.style.top = "0px";
+    } else if (scrollY >= section1Top && scrollY < section2Top) {
+      rnbBox.style.top = "48px";
+    } else if (
+      scrollY >= section3Top &&
+      scrollY < document.documentElement.scrollHeight - windowBottom
+    ) {
+      rnbBox.style.top = "96px";
+    } else if (
+      scrollY >=
+      document.documentElement.scrollHeight - windowBottom
+    ) {
+      rnbBox.style.top = "144px";
+    }
   }
-}
 
-// RNB : 네비 컨트롤 바 누르면 섹션 이동
+  // RNB : 네비 컨트롤 바 누르면 섹션 이동
 
-const rnbBtn = document.querySelectorAll("header #rnb button");
+  const rnbBtn = document.querySelectorAll("header #rnb button");
 
-rnbBtn[0].addEventListener("click", function () {
-  window.scroll({
-    top: 0,
-    behavior: "smooth",
+  rnbBtn[0].addEventListener("click", function () {
+    window.scroll({
+      top: 0,
+      behavior: "smooth",
+    });
   });
-});
 
-rnbBtn[1].addEventListener("click", function () {
-  window.scroll({
-    top: section1Top,
-    behavior: "smooth",
+  rnbBtn[1].addEventListener("click", function () {
+    window.scroll({
+      top: section1Top,
+      behavior: "smooth",
+    });
   });
-});
 
-rnbBtn[2].addEventListener("click", function () {
-  window.scroll({
-    top: section3Top,
-    behavior: "smooth",
+  rnbBtn[2].addEventListener("click", function () {
+    window.scroll({
+      top: section3Top,
+      behavior: "smooth",
+    });
   });
-});
 
-rnbBtn[3].addEventListener("click", function () {
-  window.scroll({
-    top: document.documentElement.scrollHeight,
-    behavior: "smooth",
+  rnbBtn[3].addEventListener("click", function () {
+    window.scroll({
+      top: document.documentElement.scrollHeight,
+      behavior: "smooth",
+    });
   });
 });
 
@@ -521,10 +523,15 @@ for (var i = 0; i < sec4Titles.length; i++) {
 }
 
 sec4Titles[0].addEventListener("mouseover", function () {
-  mouseCursorF.style.backgroundImage = "url(./img/main/mockup_image/woo.png)";
+  mouseCursorF.style.backgroundImage =
+    "url(./img/main/mockup_image/daewonshop.png)";
 });
 
 sec4Titles[1].addEventListener("mouseover", function () {
+  mouseCursorF.style.backgroundImage = "url(./img/main/mockup_image/woo.png)";
+});
+
+sec4Titles[2].addEventListener("mouseover", function () {
   mouseCursorF.style.backgroundImage =
     "url(./img/main/mockup_image/ilovepdf.png)";
 });
