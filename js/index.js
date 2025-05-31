@@ -536,6 +536,11 @@ sec4Titles[2].addEventListener("mouseover", function () {
     "url(./img/main/mockup_image/ilovepdf.png)";
 });
 
+sec4Titles[3].addEventListener("mouseover", function () {
+  mouseCursorF.style.backgroundImage =
+    "url(./img/main/mockup_image/rentalpay_web.png)";
+});
+
 // 섹션4 : 카드 클릭시 뒤집기 (모바일 한정)
 
 const sec4Card = document.querySelectorAll(".section4 .card");
